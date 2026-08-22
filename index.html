@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +9,6 @@
     <style>
         * {
             box-sizing: border-box;
-        }
-
-        html {
             scroll-behavior: smooth;
         }
 
@@ -22,17 +19,21 @@
             color: #202124;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
-            background: linear-gradient(135deg, #1f6feb, #1558b0);
+            background: #1769e0;
             color: white;
+            padding: 60px 20px 55px;
             text-align: center;
-            padding: 65px 20px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 48px;
-            letter-spacing: -1px;
+            font-size: 52px;
+            letter-spacing: -2px;
         }
 
         header p {
@@ -41,83 +42,194 @@
             opacity: 0.9;
         }
 
-        .container {
-            width: min(900px, calc(100% - 30px));
-            margin: 35px auto;
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #ffffff;
+            border-bottom: 1px solid #ddd;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            display: block;
+            padding: 18px 22px;
+
+            color: #222;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .nav-item > a:hover {
+            background: #1769e0;
+            color: white;
+        }
+
+        /* =========================
+           DROPDOWN
+        ========================= */
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            min-width: 220px;
+
+            background: white;
+            border: 1px solid #ddd;
+            border-top: 3px solid #1769e0;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+
+            transition: 0.2s;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 13px 16px;
+
+            color: #222;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover {
+            background: #eef4ff;
+            color: #1769e0;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 35px 20px 60px;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+            margin-bottom: 30px;
         }
 
         .card {
             background: white;
             border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 22px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
         }
 
         .card h2 {
             margin-top: 0;
-            font-size: 26px;
+            color: #1769e0;
         }
 
         .card h3 {
-            margin-bottom: 8px;
+            margin-top: 25px;
         }
 
-        .info {
-            line-height: 1.7;
-            color: #444;
+        .text {
+            line-height: 1.8;
+        }
+
+        /* =========================
+           VERSION
+        ========================= */
+
+        .version-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
         }
 
         .version {
-            color: #666;
-            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            background: #fafafa;
+        }
+
+        .version strong {
+            display: block;
+            font-size: 19px;
+            margin-bottom: 8px;
         }
 
         .badge {
             display: inline-block;
-            background: #1f6feb;
-            color: white;
+
             padding: 4px 9px;
+            margin-left: 5px;
+
             border-radius: 20px;
+
+            background: #1769e0;
+            color: white;
+
             font-size: 11px;
             font-weight: bold;
-            vertical-align: middle;
-            margin-left: 6px;
         }
 
         .java-badge {
             background: #198754;
         }
 
+        /* =========================
+           DOWNLOAD
+        ========================= */
+
         .download {
-            display: block;
-            text-decoration: none;
+            display: inline-block;
+
+            margin-top: 12px;
+            padding: 13px 20px;
+
+            border-radius: 8px;
+
+            background: #1769e0;
             color: white;
-            background: #1f6feb;
-            padding: 16px 18px;
-            border-radius: 9px;
-            margin-top: 16px;
-            transition: 0.2s ease;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.2s;
         }
 
         .download:hover {
-            background: #1558b0;
-            transform: translateY(-2px);
-        }
-
-        .download-title {
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-        .download-subtitle {
-            margin-top: 5px;
-            font-size: 13px;
-            opacity: 0.9;
-        }
-
-        .java-card {
-            border: 2px solid #198754;
+            background: #0d4fae;
+            transform: translateY(-1px);
         }
 
         .java-download {
@@ -136,34 +248,120 @@
             background: #545b62;
         }
 
-        .note {
-            background: #f1f3f5;
-            border-left: 4px solid #1f6feb;
-            padding: 12px 15px;
-            margin-top: 18px;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #555;
+        /* =========================
+           LANGUAGE LIST
+        ========================= */
+
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
         }
+
+        .language {
+            padding: 9px 13px;
+
+            background: #eef4ff;
+            border: 1px solid #cbdcff;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+            color: #1769e0;
+        }
+
+        /* =========================
+           HELP
+        ========================= */
+
+        .help-step {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .help-step:last-child {
+            border-bottom: none;
+        }
+
+        /* =========================
+           GITHUB
+        ========================= */
+
+        .github-button {
+            background: #24292f;
+        }
+
+        .github-button:hover {
+            background: #000000;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .email {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .email a {
+            color: #1769e0;
+            text-decoration: none;
+        }
+
+        .email a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             text-align: center;
-            color: #777;
-            padding: 35px 15px;
+            padding: 30px 20px;
+
+            background: #202124;
+            color: #aaa;
+
             font-size: 14px;
         }
 
-        @media (max-width: 600px) {
-            header {
-                padding: 45px 15px;
-            }
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
 
             header h1 {
-                font-size: 38px;
+                font-size: 40px;
+            }
+
+            nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+            .nav-item > a {
+                padding: 15px 16px;
+                white-space: nowrap;
+            }
+
+            .dropdown {
+                min-width: 190px;
+            }
+
+            main {
+                padding: 20px 12px 40px;
             }
 
             .card {
-                padding: 21px;
+                padding: 22px;
             }
         }
     </style>
@@ -171,194 +369,592 @@
 
 <body>
 
-<header>
+<!-- =========================
+     HEADER
+========================= -->
+
+<header id="top">
+
     <h1>Code++</h1>
-    <p>Lightweight code editor for Windows</p>
+
+    <p>
+        A lightweight code editor for Windows
+    </p>
+
 </header>
 
 
-<main class="container">
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <!-- HOME -->
+
+    <div class="nav-item">
+
+        <a href="#home">
+            Trang chủ
+        </a>
+
+        <div class="dropdown">
+
+            <a href="#about">
+                Giới thiệu
+            </a>
+
+            <a href="#features">
+                Tính năng
+            </a>
+
+            <a href="#languages">
+                Ngôn ngữ
+            </a>
+
+            <a href="#versions">
+                Phiên bản
+            </a>
+
+            <a href="#documents">
+                Tài liệu
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- GITHUB -->
+
+    <div class="nav-item">
+
+        <a
+            href="https://github.com/tuin5995-rgb/codePP"
+            target="_blank"
+        >
+            My Page on GitHub
+        </a>
+
+    </div>
+
+
+    <!-- INSTALL -->
+
+    <div class="nav-item">
+
+        <a href="#instal">
+            Instal
+        </a>
+
+        <div class="dropdown">
+
+            <a href="#cpp">
+                C++ Edition
+            </a>
+
+            <a href="#java">
+                Java Edition
+            </a>
+
+            <a href="#old-versions">
+                Phiên bản cũ
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- HELP -->
+
+    <div class="nav-item">
+
+        <a href="#help">
+            Help
+        </a>
+
+        <div class="dropdown">
+
+            <a href="#getting-started">
+                Bắt đầu
+            </a>
+
+            <a href="#running">
+                Chạy chương trình
+            </a>
+
+            <a href="#troubleshooting">
+                Xử lý lỗi
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONTACT -->
+
+    <div class="nav-item">
+
+        <a href="#contact">
+            Liên hệ
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+    <!-- HOME -->
+
+    <section id="home">
+
+        <div class="card">
+
+            <h2>Trang chủ</h2>
+
+            <p class="text">
+                Code++ là một code editor nhẹ dành cho Windows,
+                được thiết kế để cung cấp môi trường đơn giản
+                và dễ sử dụng cho việc viết và thử nghiệm mã nguồn.
+            </p>
+
+            <p class="text">
+                Project hiện đang được phát triển và hỗ trợ nhiều
+                ngôn ngữ lập trình khác nhau.
+            </p>
+
+        </div>
+
+    </section>
+
 
     <!-- ABOUT -->
 
-    <section class="card">
-        <h2>About Code++</h2>
+    <section id="about">
 
-        <div class="info">
-            <p>
-                <strong>Code++</strong> is a lightweight code editor
-                designed for Windows.
+        <div class="card">
+
+            <h2>Code++ là gì?</h2>
+
+            <p class="text">
+                Code++ là một dự án code editor tập trung vào sự
+                đơn giản, nhẹ và dễ sử dụng trên Windows.
             </p>
 
-            <p>
-                Code++ supports programming languages including
-                C, C++, Python, Java and more.
+            <p class="text">
+                Project được phát triển với mục tiêu cung cấp
+                một công cụ nhỏ gọn để viết, chỉnh sửa và chạy
+                code mà không cần một IDE quá nặng.
             </p>
 
-            <p>
-                The project is lightweight, fast and currently
-                under development.
-            </p>
         </div>
+
     </section>
 
 
-    <!-- C++ EDITION -->
+    <!-- FEATURES -->
 
-    <section class="card">
-        <h2>
-            C++ Edition
-            <span class="badge">LATEST</span>
-        </h2>
+    <section id="features">
 
-        <p class="version">
-            Version 1.1.3
-        </p>
+        <div class="card">
 
-        <p>
-            Download the latest C++ Edition as a ZIP archive.
-        </p>
+            <h2>Tính năng</h2>
 
-        <a
-            class="download"
-            href="CodePlusPlus-1.1.3.zip"
-            download
-        >
-            <div class="download-title">
-                Download Code++ C++ Edition 1.1.3
-            </div>
+            <ul class="text">
 
-            <div class="download-subtitle">
-                ZIP archive
-            </div>
-        </a>
-    </section>
+                <li>Giao diện code editor đơn giản.</li>
 
+                <li>Hỗ trợ nhiều ngôn ngữ lập trình.</li>
 
-    <!-- JAVA EDITION -->
+                <li>Chỉnh sửa source code.</li>
 
-    <section class="card java-card">
-        <h2>
-            Java Edition
-            <span class="badge java-badge">LATEST</span>
-        </h2>
+                <li>Chạy và kiểm tra chương trình.</li>
 
-        <p class="version">
-            Version 1.2.0
-        </p>
+                <li>Hỗ trợ C và C++.</li>
 
-        <p>
-            Download the Windows installer for Code++ Java Edition.
-        </p>
+                <li>Hỗ trợ Python.</li>
 
-        <a
-            class="download java-download"
-            href="https://github.com/tuin5995-rgb/codePP/releases/download/v1.2.0/Code%2B%2B.Java.Edition-1.2.0.exe"
-        >
-            <div class="download-title">
-                Download Code++ Java Edition 1.2.0
-            </div>
+                <li>Hỗ trợ Java Edition.</li>
 
-            <div class="download-subtitle">
-                Windows Installer (.exe)
-            </div>
-        </a>
+                <li>Hoạt động trên Windows.</li>
 
-        <div class="note">
-            The Java Edition installer includes the required Java runtime,
-            so Java does not need to be installed separately.
+            </ul>
+
         </div>
+
+    </section>
+
+
+    <!-- LANGUAGES -->
+
+    <section id="languages">
+
+        <div class="card">
+
+            <h2>Ngôn ngữ hỗ trợ</h2>
+
+            <p class="text">
+                Code++ hướng tới việc hỗ trợ nhiều ngôn ngữ
+                lập trình và ngôn ngữ đánh dấu.
+            </p>
+
+            <div class="languages">
+
+                <span class="language">C</span>
+                <span class="language">C++</span>
+                <span class="language">Python</span>
+                <span class="language">Java</span>
+                <span class="language">HTML</span>
+                <span class="language">CSS</span>
+                <span class="language">JavaScript</span>
+
+            </div>
+
+        </div>
+
     </section>
 
 
-    <!-- VERSION HISTORY -->
+    <!-- VERSIONS -->
 
-    <section class="card">
-        <h2>Version History</h2>
+    <section id="versions">
+
+        <div class="card">
+
+            <h2>Phiên bản hiện tại</h2>
+
+            <div class="version-box">
+
+                <div class="version">
+
+                    <strong>
+                        C++ Edition
+                        <span class="badge">
+                            1.1.3
+                        </span>
+                    </strong>
+
+                    <p>
+                        Phiên bản C++ Edition hiện tại.
+                    </p>
+
+                </div>
 
 
-        <!-- 1.1.3 -->
+                <div class="version">
 
-        <h3>
-            Code++ C++ Edition 1.1.3
-            <span class="badge">LATEST</span>
-        </h3>
+                    <strong>
+                        Java Edition
+                        <span class="badge java-badge">
+                            1.2.0
+                        </span>
+                    </strong>
 
-        <p class="version">
-            Latest C++ Edition
-        </p>
+                    <p>
+                        Phiên bản Java Edition hiện tại.
+                    </p>
 
-        <a
-            class="download"
-            href="CodePlusPlus-1.1.3.zip"
-            download
-        >
-            <div class="download-title">
-                Code++ 1.1.3 - ZIP
+                </div>
+
             </div>
 
-            <div class="download-subtitle">
-                Download C++ Edition 1.1.3
-            </div>
-        </a>
-
-
-        <!-- 1.1.2 -->
-
-        <h3 style="margin-top: 30px;">
-            Code++ C++ Edition 1.1.2
-        </h3>
-
-        <p class="version">
-            Previous C++ Edition
-        </p>
-
-        <a
-            class="download old-download"
-            href="CodePlusPlus-1.1.2.zip"
-            download
-        >
-            <div class="download-title">
-                Code++ 1.1.2 - ZIP
-            </div>
-
-            <div class="download-subtitle">
-                Download C++ Edition 1.1.2
-            </div>
-        </a>
-
-
-        <!-- JAVA -->
-
-        <h3 style="margin-top: 30px;">
-            Code++ Java Edition 1.2.0
-        </h3>
-
-        <p class="version">
-            Current Java Edition
-        </p>
-
-        <a
-            class="download java-download"
-            href="https://github.com/tuin5995-rgb/codePP/releases/download/v1.2.0/Code%2B%2B.Java.Edition-1.2.0.exe"
-        >
-            <div class="download-title">
-                Code++ Java Edition 1.2.0 - Installer
-            </div>
-
-            <div class="download-subtitle">
-                Windows Installer (.exe)
-            </div>
-        </a>
+        </div>
 
     </section>
+
+
+    <!-- DOCUMENTS -->
+
+    <section id="documents">
+
+        <div class="card">
+
+            <h2>Tài liệu liên quan</h2>
+
+            <p class="text">
+                Tài liệu hướng dẫn sử dụng, thông tin phiên bản
+                và các thông tin liên quan đến Code++ sẽ được
+                cập nhật tại đây.
+            </p>
+
+            <p class="text">
+                Project hiện đang trong quá trình phát triển,
+                vì vậy tài liệu có thể được cập nhật theo từng
+                phiên bản.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INSTALL -->
+
+    <section id="instal">
+
+        <div class="card">
+
+            <h2>Instal</h2>
+
+            <p class="text">
+                Chọn phiên bản Code++ phù hợp với nhu cầu của bạn.
+            </p>
+
+
+            <!-- C++ -->
+
+            <div id="cpp">
+
+                <h3>
+                    Code++ C++ Edition 1.1.3
+                    <span class="badge">
+                        LATEST
+                    </span>
+                </h3>
+
+                <p>
+                    Bản C++ Edition được phát hành dưới dạng ZIP.
+                </p>
+
+                <a
+                    class="download"
+                    href="CodePlusPlus-1.1.3.zip"
+                    download
+                >
+                    Download C++ Edition 1.1.3
+                </a>
+
+            </div>
+
+
+            <!-- JAVA -->
+
+            <div id="java">
+
+                <h3>
+                    Code++ Java Edition 1.2.0
+                    <span class="badge java-badge">
+                        LATEST
+                    </span>
+                </h3>
+
+                <p>
+                    Java Edition được phát hành dưới dạng
+                    Windows Installer.
+                </p>
+
+                <!--
+                    THAY # BẰNG LINK GITHUB RELEASE
+                    CỦA FILE:
+                    Code++ Java Edition-1.2.0.exe
+                -->
+
+                <a
+                    class="download java-download"
+                    href="#"
+                >
+                    Download Java Edition Installer
+                </a>
+
+            </div>
+
+
+            <!-- OLD -->
+
+            <div id="old-versions">
+
+                <h3>
+                    C++ Edition 1.1.2
+                </h3>
+
+                <p>
+                    Phiên bản C++ Edition trước đó.
+                </p>
+
+                <a
+                    class="download old-download"
+                    href="CodePlusPlus-1.1.2.zip"
+                    download
+                >
+                    Download C++ Edition 1.1.2
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HELP -->
+
+    <section id="help">
+
+        <div class="card">
+
+            <h2>Help</h2>
+
+
+            <div id="getting-started" class="help-step">
+
+                <h3>Bắt đầu</h3>
+
+                <p class="text">
+                    Tải phiên bản Code++ phù hợp, giải nén nếu
+                    sử dụng bản ZIP, sau đó chạy ứng dụng.
+                </p>
+
+            </div>
+
+
+            <div id="running" class="help-step">
+
+                <h3>Chạy chương trình</h3>
+
+                <p class="text">
+                    Viết hoặc mở source code trong Code++,
+                    chọn ngôn ngữ tương ứng và sử dụng chức năng
+                    chạy chương trình nếu môi trường cần thiết
+                    đã được cài đặt trên Windows.
+                </p>
+
+            </div>
+
+
+            <div id="troubleshooting" class="help-step">
+
+                <h3>Xử lý lỗi</h3>
+
+                <p class="text">
+                    Nếu chương trình không chạy, hãy kiểm tra
+                    compiler, runtime hoặc các công cụ cần thiết
+                    cho ngôn ngữ đang sử dụng.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GITHUB -->
+
+    <section id="github">
+
+        <div class="card">
+
+            <h2>My Page on GitHub</h2>
+
+            <p class="text">
+                Source code và thông tin phát triển của Code++
+                được lưu trữ trên GitHub.
+            </p>
+
+            <a
+                class="download github-button"
+                href="https://github.com/tuin5995-rgb/codePP"
+                target="_blank"
+            >
+                Open GitHub
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="card">
+
+            <h2>Liên hệ</h2>
+
+            <p class="text">
+                Nếu cần liên hệ về Code++, sử dụng địa chỉ email:
+            </p>
+
+            <p class="email">
+
+                <a href="mailto:tuin5995@gmail.com">
+                    tuin5995@gmail.com
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
 
 </main>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-    Code++ · C++ Edition 1.1.3 · Java Edition 1.2.0
+
+    <p>
+        <strong>Code++</strong>
+    </p>
+
+    <p>
+        C++ Edition 1.1.3 · Java Edition 1.2.0
+    </p>
+
+    <p>
+        © Code++ Project
+    </p>
+
 </footer>
+
+
+<script>
+
+    /*
+        Giữ vị trí khi reload trang.
+        Không cần thư viện ngoài.
+    */
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener('click', function () {
+
+            const target = document.querySelector(
+                this.getAttribute('href')
+            );
+
+            if (target) {
+
+                setTimeout(() => {
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }, 50);
+
+            }
+
+        });
+
+    });
+
+</script>
 
 </body>
 </html>
