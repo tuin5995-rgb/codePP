@@ -4,24 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Code++ | Trình soạn thảo C++</title>
+    <title>Code++</title>
 
     <meta
         name="description"
-        content="Code++ là trình soạn thảo C++ nhẹ, đơn giản và hiện đại."
+        content="Code++ - trình soạn thảo lập trình hiện đại."
     >
 
-    <meta name="theme-color" content="#080b12">
-
-    <!-- FAVICON -->
     <link rel="icon" href="icon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
 
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
@@ -29,24 +25,29 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background: #080b12;
             color: #f5f7fb;
-            line-height: 1.6;
+
+            min-height: 100vh;
         }
 
+        button,
         a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
             font-family: inherit;
         }
 
-        .container {
-            width: min(1120px, calc(100% - 40px));
-            margin: auto;
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         /* =========================
@@ -55,31 +56,52 @@
 
         header {
             position: fixed;
+
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
 
-            background: rgba(8, 11, 18, 0.88);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-        }
-
-        .nav {
             height: 70px;
 
+            z-index: 9999;
+
+            background:
+                rgba(8, 11, 18, 0.88);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+        .header-inner {
+            width:
+                min(
+                    1150px,
+                    calc(100% - 40px)
+                );
+
+            height: 100%;
+
+            margin: auto;
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
         }
 
         .logo {
             display: flex;
+
             align-items: center;
+
             gap: 10px;
 
             font-size: 22px;
+
             font-weight: 800;
         }
 
@@ -88,45 +110,74 @@
             height: 38px;
 
             object-fit: contain;
+
             border-radius: 9px;
         }
 
-        .nav-links {
+        .nav {
             display: flex;
+
             align-items: center;
-            gap: 25px;
+
+            gap: 22px;
         }
 
-        .nav-links a {
+        .nav button {
+            border: none;
+
+            background: none;
+
             color: #aeb7c9;
+
             font-size: 14px;
-            transition: 0.2s;
         }
 
-        .nav-links a:hover {
-            color: #ffffff;
+        .nav button:hover {
+            color: white;
         }
 
-        .nav-download {
-            padding: 10px 17px;
+        .download-nav {
+            padding:
+                9px
+                15px;
 
-            background: #ffffff;
+            background: white;
+
             color: #101522 !important;
 
             border-radius: 9px;
+
             font-weight: 700;
         }
 
-        .menu-button {
-            display: none;
+        /* =========================
+           APP
+        ========================= */
 
-            background: none;
-            border: none;
+        #app {
+            min-height: 100vh;
 
-            color: white;
-            font-size: 25px;
+            padding-top: 70px;
+        }
 
-            cursor: pointer;
+        .page {
+            min-height:
+                calc(
+                    100vh - 70px
+                );
+
+            padding:
+                90px 20px;
+        }
+
+        .page-inner {
+            width:
+                min(
+                    1100px,
+                    100%
+                );
+
+            margin: auto;
         }
 
         /* =========================
@@ -134,50 +185,59 @@
         ========================= */
 
         .hero {
-            min-height: 760px;
-
             display: flex;
+
             align-items: center;
 
-            padding-top: 80px;
+            justify-content: center;
+
+            text-align: center;
 
             background:
                 radial-gradient(
                     circle at 50% 15%,
-                    rgba(84, 112, 255, 0.18),
-                    transparent 36%
-                ),
-                #080b12;
+                    rgba(83,111,255,0.18),
+                    transparent 38%
+                );
         }
 
         .hero-content {
             max-width: 850px;
-            margin: auto;
-
-            text-align: center;
         }
 
         .badge {
             display: inline-block;
 
-            padding: 7px 14px;
+            padding:
+                7px
+                14px;
 
-            border: 1px solid rgba(255,255,255,0.1);
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
             border-radius: 999px;
-
-            background: rgba(255,255,255,0.04);
 
             color: #aeb7c9;
 
+            background:
+                rgba(255,255,255,0.04);
+
             font-size: 13px;
 
-            margin-bottom: 24px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: clamp(55px, 10vw, 105px);
+            font-size:
+                clamp(
+                    60px,
+                    11vw,
+                    110px
+                );
 
-            line-height: 0.95;
+            line-height: 0.9;
+
             letter-spacing: -6px;
 
             margin-bottom: 25px;
@@ -197,190 +257,102 @@
             font-size: 18px;
         }
 
-        .hero-buttons {
-            margin-top: 34px;
+        .buttons {
+            margin-top: 35px;
 
             display: flex;
+
             justify-content: center;
 
-            gap: 13px;
+            gap: 12px;
 
             flex-wrap: wrap;
         }
 
-        .button {
-            min-height: 48px;
-
+        .btn {
             display: inline-flex;
+
             align-items: center;
+
             justify-content: center;
 
-            padding: 0 22px;
+            min-height: 48px;
+
+            padding:
+                0
+                21px;
 
             border-radius: 10px;
 
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
             font-weight: 700;
 
-            border: 1px solid rgba(255,255,255,0.1);
-
             transition:
-                transform 0.2s,
-                background 0.2s;
+                transform .2s,
+                background .2s;
         }
 
-        .button:hover {
-            transform: translateY(-2px);
+        .btn:hover {
+            transform:
+                translateY(-2px);
         }
 
-        .button-primary {
-            background: #ffffff;
+        .btn-primary {
+            background: white;
+
             color: #101522;
         }
 
-        .button-secondary {
-            background: rgba(255,255,255,0.05);
-            color: #ffffff;
+        .btn-secondary {
+            background:
+                rgba(255,255,255,0.05);
+
+            color: white;
         }
 
-        .hero-version {
-            margin-top: 17px;
+        .version-text {
+            margin-top: 16px;
 
-            color: #697388;
+            color: #687286;
 
             font-size: 13px;
         }
 
         /* =========================
-           SECTIONS
+           PAGE TITLE
         ========================= */
 
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            max-width: 700px;
-
-            margin:
-                0 auto
-                55px;
-
+        .page-title {
             text-align: center;
+
+            margin-bottom: 55px;
         }
 
-        .section-title h2 {
-            font-size: 38px;
+        .page-title h1 {
+            font-size: 46px;
 
             margin-bottom: 12px;
         }
 
-        .section-title p {
+        .page-title p {
             color: #929caf;
         }
 
         /* =========================
-           ABOUT
+           CARDS
         ========================= */
 
-        .about {
-            background: #0d121d;
-        }
-
-        .about-grid {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 60px;
-
-            align-items: center;
-        }
-
-        .about h2 {
-            font-size: 40px;
-
-            margin-bottom: 18px;
-        }
-
-        .about p {
-            color: #9da7ba;
-
-            margin-bottom: 15px;
-        }
-
-        /* =========================
-           TERMINAL
-        ========================= */
-
-        .terminal {
-            background: #05070c;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            border-radius: 15px;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 25px 70px
-                rgba(0,0,0,0.35);
-        }
-
-        .terminal-bar {
-            height: 42px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 7px;
-
-            padding: 0 15px;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.06);
-        }
-
-        .terminal-dot {
-            width: 9px;
-            height: 9px;
-
-            border-radius: 50%;
-
-            background: #596275;
-        }
-
-        .terminal-code {
-            padding: 25px;
-
-            font-family: Consolas, monospace;
-
-            font-size: 14px;
-
-            color: #d1d8e7;
-
-            white-space: pre-wrap;
-        }
-
-        .keyword {
-            color: #aebaff;
-        }
-
-        .string {
-            color: #a9d7a3;
-        }
-
-        /* =========================
-           FEATURES
-        ========================= */
-
-        .features {
+        .grid {
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(
+                    3,
+                    1fr
+                );
 
             gap: 18px;
         }
@@ -395,168 +367,112 @@
                 rgba(255,255,255,0.07);
 
             border-radius: 16px;
-
-            transition:
-                transform 0.2s,
-                border 0.2s;
         }
 
-        .card:hover {
-            transform: translateY(-3px);
-
-            border-color:
-                rgba(255,255,255,0.15);
-        }
-
-        .card-icon {
-            width: 44px;
-            height: 44px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 11px;
-
-            background: #1b2335;
-
-            margin-bottom: 18px;
-
-            font-size: 18px;
-        }
-
+        .card h2,
         .card h3 {
-            margin-bottom: 9px;
-
-            font-size: 19px;
+            margin-bottom: 10px;
         }
 
         .card p {
-            color: #919bb0;
+            color: #929caf;
 
             font-size: 14px;
+        }
+
+        .icon {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            background: #1b2335;
+
+            border-radius: 11px;
+
+            font-size: 19px;
         }
 
         /* =========================
            DOWNLOAD
         ========================= */
 
-        .download-box {
-            max-width: 800px;
-
-            margin: auto;
-
-            padding: 40px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #131a2a,
-                    #0e1420
-                );
-
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            border-radius: 20px;
-
-            text-align: center;
+        .edition {
+            margin-bottom: 45px;
         }
 
-        .download-box h3 {
-            font-size: 30px;
+        .edition-title {
+            margin-bottom: 18px;
 
-            margin-bottom: 8px;
+            font-size: 28px;
         }
 
-        .download-box > p {
-            color: #969fb4;
-        }
+        .download-card {
+            display: flex;
 
-        .download-meta {
-            max-width: 500px;
+            align-items: center;
 
-            margin:
-                25px
-                auto;
+            justify-content: space-between;
 
-            display: grid;
+            gap: 20px;
 
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 10px;
-        }
-
-        .meta {
-            padding: 13px;
-
-            background:
-                rgba(255,255,255,0.04);
-
-            border-radius: 10px;
-        }
-
-        .meta strong {
-            display: block;
-
-            font-size: 14px;
-        }
-
-        .meta span {
-            color: #818b9f;
-
-            font-size: 12px;
-        }
-
-        .download-note {
-            margin-top: 15px;
-
-            color: #687286 !important;
-
-            font-size: 12px;
-        }
-
-        /* =========================
-           DOCUMENTATION
-        ========================= */
-
-        .docs {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-        .doc-card {
-            padding: 25px;
+            padding: 24px;
 
             background: #111725;
 
             border:
                 1px solid
-                rgba(255,255,255,0.07);
+                rgba(255,255,255,0.08);
 
-            border-radius: 14px;
+            border-radius: 15px;
 
-            transition: transform 0.2s;
+            margin-bottom: 12px;
         }
 
-        .doc-card:hover {
-            transform: translateY(-3px);
+        .download-info h3 {
+            margin-bottom: 5px;
         }
 
-        .doc-card h3 {
-            margin-bottom: 7px;
+        .download-info p {
+            color: #8f99ad;
+
+            font-size: 13px;
         }
 
-        .doc-card p {
-            color: #8e98ad;
+        .download-info strong {
+            color: #8ea2ff;
+        }
+
+        /* =========================
+           BACK
+        ========================= */
+
+        .back-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            border: none;
+
+            background: none;
+
+            color: #aeb7c9;
 
             font-size: 14px;
+
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            color: white;
         }
 
         /* =========================
@@ -564,70 +480,51 @@
         ========================= */
 
         .timeline {
-            max-width: 750px;
+            max-width: 800px;
 
             margin: auto;
         }
 
-        .version {
-            padding: 25px 0;
+        .release {
+            padding:
+                25px
+                0;
 
             border-bottom:
                 1px solid
                 rgba(255,255,255,0.08);
         }
 
-        .version:last-child {
+        .release:last-child {
             border-bottom: none;
         }
 
-        .version-head {
+        .release-head {
             display: flex;
 
-            align-items: center;
             justify-content: space-between;
 
+            align-items: center;
+
             gap: 20px;
-
-            margin-bottom: 10px;
-        }
-
-        .version-head h3 {
-            font-size: 20px;
-        }
-
-        .version-date {
-            color: #687287;
-
-            font-size: 13px;
-        }
-
-        .version ul {
-            padding-left: 20px;
-
-            color: #969fb3;
-        }
-
-        /* =========================
-           GITHUB
-        ========================= */
-
-        .github {
-            background: #0d121d;
-
-            text-align: center;
-        }
-
-        .github h2 {
-            font-size: 38px;
 
             margin-bottom: 12px;
         }
 
-        .github p {
-            color: #929caf;
+        .release-head h2 {
+            font-size: 21px;
+        }
 
-            margin-bottom: 25px;
+        .release-date {
+            color: #687286;
+
+            font-size: 13px;
+        }
+
+        .release ul {
+            padding-left: 20px;
+
+            color: #969fb3;
         }
 
         /* =========================
@@ -635,7 +532,9 @@
         ========================= */
 
         footer {
-            padding: 35px 0;
+            padding:
+                35px
+                20px;
 
             border-top:
                 1px solid
@@ -643,26 +542,9 @@
 
             color: #707a8f;
 
+            text-align: center;
+
             font-size: 13px;
-        }
-
-        .footer-inner {
-            display: flex;
-
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .footer-links {
-            display: flex;
-
-            gap: 20px;
-        }
-
-        .footer-links a:hover {
-            color: #ffffff;
         }
 
         /* =========================
@@ -671,61 +553,26 @@
 
         @media (max-width: 800px) {
 
-            .nav-links {
+            .nav {
+                gap: 8px;
+            }
+
+            .nav button {
                 display: none;
+            }
 
-                position: absolute;
+            .grid {
+                grid-template-columns: 1fr;
+            }
 
-                top: 70px;
-                left: 0;
-                right: 0;
-
-                padding: 20px;
-
-                background: #080b12;
-
-                border-bottom:
-                    1px solid
-                    rgba(255,255,255,0.08);
-
+            .download-card {
                 flex-direction: column;
 
-                align-items: stretch;
+                align-items: flex-start;
             }
 
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 10px;
-            }
-
-            .menu-button {
-                display: block;
-            }
-
-            .features,
-            .docs {
-                grid-template-columns: 1fr;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .download-meta {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-
-                text-align: center;
-            }
-
-            .hero {
-                min-height: 680px;
+            .page-title h1 {
+                font-size: 38px;
             }
 
             .hero h1 {
@@ -737,17 +584,14 @@
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
-    <div class="container nav">
+    <div class="header-inner">
 
-        <a
-            href="#home"
+        <button
             class="logo"
+            onclick="navigate('home')"
+            style="border:none;background:none;color:white;"
         >
 
             <img
@@ -757,57 +601,37 @@
 
             <span>Code++</span>
 
-        </a>
-
-
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Mở menu"
-        >
-            ☰
         </button>
 
 
-        <nav
-            class="nav-links"
-            id="navLinks"
-        >
+        <nav class="nav">
 
-            <a href="#about">
-                Giới thiệu
-            </a>
+            <button onclick="navigate('home')">
+                Trang chủ
+            </button>
 
-            <a href="#features">
-                Tính năng
-            </a>
-
-            <a href="#download">
+            <button onclick="navigate('download')">
                 Tải xuống
-            </a>
+            </button>
 
-            <a href="#docs">
+            <button onclick="navigate('features')">
+                Tính năng
+            </button>
+
+            <button onclick="navigate('docs')">
                 Tài liệu
-            </a>
+            </button>
 
-            <a href="#changelog">
+            <button onclick="navigate('changelog')">
                 Cập nhật
-            </a>
+            </button>
 
-            <a
-                href="https://github.com/tuin5995-rgb/codePP"
-                target="_blank"
-                rel="noopener"
-            >
-                GitHub
-            </a>
-
-            <a
-                href="#download"
-                class="nav-download"
+            <button
+                class="download-nav"
+                onclick="navigate('download')"
             >
                 Tải Code++
-            </a>
+            </button>
 
         </nav>
 
@@ -816,688 +640,769 @@
 </header>
 
 
-<main>
+<div id="app"></div>
 
-<!-- =========================
-     HERO
-========================= -->
-
-<section
-    class="hero"
-    id="home"
->
-
-    <div class="container hero-content">
-
-        <div class="badge">
-            Code++ 1.1.3 · C++ Edition
-        </div>
-
-
-        <h1>
-            Code<span>++</span>
-        </h1>
-
-
-        <p>
-            Trình soạn thảo C++ nhẹ, đơn giản
-            và được xây dựng để giúp bạn
-            tập trung vào việc viết code.
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a
-                href="#download"
-                class="button button-primary"
-            >
-                Tải Code++
-            </a>
-
-
-            <a
-                href="#features"
-                class="button button-secondary"
-            >
-                Khám phá
-            </a>
-
-        </div>
-
-
-        <div class="hero-version">
-            Phiên bản mới nhất: 1.1.3
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section
-    class="about"
-    id="about"
->
-
-    <div class="container about-grid">
-
-        <div>
-
-            <h2>
-                Code đơn giản hơn.
-            </h2>
-
-
-            <p>
-                Code++ được tạo ra với mục tiêu
-                cung cấp một môi trường lập trình
-                C++ gọn gàng và dễ tiếp cận.
-            </p>
-
-
-            <p>
-                Không cần một giao diện quá phức tạp.
-                Mở Code++, viết code và bắt đầu làm việc.
-            </p>
-
-
-            <p>
-                Code++ đang tiếp tục được phát triển
-                với nhiều tính năng mới trong các
-                phiên bản tương lai.
-            </p>
-
-        </div>
-
-
-        <div class="terminal">
-
-            <div class="terminal-bar">
-
-                <div class="terminal-dot"></div>
-                <div class="terminal-dot"></div>
-                <div class="terminal-dot"></div>
-
-            </div>
-
-
-            <div class="terminal-code"><span class="keyword">#include</span> &lt;iostream&gt;
-
-<span class="keyword">int</span> main() {
-    std::cout &lt;&lt; <span class="string">"Hello, Code++!"</span>;
-
-    <span class="keyword">return</span> 0;
-}</div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FEATURES
-========================= -->
-
-<section id="features">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Tính năng
-            </h2>
-
-            <p>
-                Những gì Code++ hướng tới
-                trong quá trình phát triển.
-            </p>
-
-        </div>
-
-
-        <div class="features">
-
-            <div class="card">
-
-                <div class="card-icon">
-                    &lt;/&gt;
-                </div>
-
-                <h3>
-                    Code C++
-                </h3>
-
-                <p>
-                    Môi trường tập trung vào việc
-                    viết và chỉnh sửa mã nguồn C++.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Nhẹ
-                </h3>
-
-                <p>
-                    Bộ cài nhỏ gọn, không yêu cầu
-                    một bộ phần mềm khổng lồ.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    ▣
-                </div>
-
-                <h3>
-                    Desktop App
-                </h3>
-
-                <p>
-                    Được đóng gói thành ứng dụng
-                    Windows với installer riêng.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    ↗
-                </div>
-
-                <h3>
-                    Cập nhật
-                </h3>
-
-                <p>
-                    Code++ tiếp tục được phát triển
-                    qua các phiên bản mới.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    ⌘
-                </div>
-
-                <h3>
-                    Đơn giản
-                </h3>
-
-                <p>
-                    Giao diện tập trung vào việc
-                    viết code thay vì làm mọi thứ
-                    trở nên phức tạp.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    ∞
-                </div>
-
-                <h3>
-                    Mở rộng
-                </h3>
-
-                <p>
-                    Có thể bổ sung thêm nhiều
-                    tính năng trong tương lai.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     DOWNLOAD
-========================= -->
-
-<section id="download">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Tải xuống
-            </h2>
-
-            <p>
-                Phiên bản Code++ chính thức mới nhất.
-            </p>
-
-        </div>
-
-
-        <div class="download-box">
-
-            <h3>
-                Code++ 1.1.3
-            </h3>
-
-
-            <p>
-                C++ Edition · Windows
-            </p>
-
-
-            <div class="download-meta">
-
-                <div class="meta">
-
-                    <strong>
-                        1.1.3
-                    </strong>
-
-                    <span>
-                        Phiên bản
-                    </span>
-
-                </div>
-
-
-                <div class="meta">
-
-                    <strong>
-                        Windows
-                    </strong>
-
-                    <span>
-                        Nền tảng
-                    </span>
-
-                </div>
-
-
-                <div class="meta">
-
-                    <strong>
-                        Installer
-                    </strong>
-
-                    <span>
-                        Định dạng
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!--
-                LINK TẢI CODE++ 1.1.3
-
-                Hiện tại trỏ tới Releases.
-                Khi có Release chính thức,
-                link này sẽ mở trang tải.
-            -->
-
-            <a
-                href="https://github.com/tuin5995-rgb/codePP/releases"
-                target="_blank"
-                rel="noopener"
-                class="button button-primary"
-            >
-                Tải Code++ 1.1.3
-            </a>
-
-
-            <p class="download-note">
-                Installer chính thức của Code++.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     DOCUMENTATION
-========================= -->
-
-<section id="docs">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Tài liệu
-            </h2>
-
-            <p>
-                Thông tin cơ bản về Code++.
-            </p>
-
-        </div>
-
-
-        <div class="docs">
-
-            <a
-                href="#about"
-                class="doc-card"
-            >
-
-                <h3>
-                    Giới thiệu Code++
-                </h3>
-
-                <p>
-                    Tìm hiểu mục tiêu và
-                    định hướng của dự án.
-                </p>
-
-            </a>
-
-
-            <a
-                href="#features"
-                class="doc-card"
-            >
-
-                <h3>
-                    Tính năng
-                </h3>
-
-                <p>
-                    Xem những tính năng hiện tại
-                    của Code++.
-                </p>
-
-            </a>
-
-
-            <a
-                href="#changelog"
-                class="doc-card"
-            >
-
-                <h3>
-                    Changelog
-                </h3>
-
-                <p>
-                    Xem lịch sử cập nhật
-                    của Code++.
-                </p>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CHANGELOG
-========================= -->
-
-<section id="changelog">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Cập nhật
-            </h2>
-
-            <p>
-                Các mốc phát triển của Code++.
-            </p>
-
-        </div>
-
-
-        <div class="timeline">
-
-
-            <div class="version">
-
-                <div class="version-head">
-
-                    <h3>
-                        Code++ 1.1.3
-                    </h3>
-
-                    <span class="version-date">
-                        Hiện tại
-                    </span>
-
-                </div>
-
-
-                <ul>
-
-                    <li>
-                        Cải thiện Code++ Edition.
-                    </li>
-
-                    <li>
-                        Thêm installer Windows.
-                    </li>
-
-                    <li>
-                        Hỗ trợ cài đặt và gỡ cài đặt.
-                    </li>
-
-                    <li>
-                        Thêm shortcut ứng dụng.
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="version">
-
-                <div class="version-head">
-
-                    <h3>
-                        Code++ 1.1.x
-                    </h3>
-
-                    <span class="version-date">
-                        Trước đó
-                    </span>
-
-                </div>
-
-
-                <ul>
-
-                    <li>
-                        Tiếp tục phát triển trình soạn thảo.
-                    </li>
-
-                    <li>
-                        Cải thiện cấu trúc ứng dụng.
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="version">
-
-                <div class="version-head">
-
-                    <h3>
-                        Code++
-                    </h3>
-
-                    <span class="version-date">
-                        Khởi đầu
-                    </span>
-
-                </div>
-
-
-                <ul>
-
-                    <li>
-                        Bắt đầu dự án Code++.
-                    </li>
-
-                    <li>
-                        Xây dựng nền tảng ứng dụng ban đầu.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     GITHUB
-========================= -->
-
-<section class="github">
-
-    <div class="container">
-
-        <h2>
-            Code++ trên GitHub
-        </h2>
-
-
-        <p>
-            Mã nguồn, cập nhật và tài nguyên
-            của dự án.
-        </p>
-
-
-        <a
-            href="https://github.com/tuin5995-rgb/codePP"
-            target="_blank"
-            rel="noopener"
-            class="button button-primary"
-        >
-            Mở GitHub
-        </a>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
-    <div class="container footer-inner">
-
-        <div>
-            © 2026 Code++. All rights reserved.
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#home">
-                Trang chủ
-            </a>
-
-            <a href="#download">
-                Tải xuống
-            </a>
-
-            <a
-                href="https://github.com/tuin5995-rgb/codePP"
-                target="_blank"
-                rel="noopener"
-            >
-                GitHub
-            </a>
-
-        </div>
-
+    <div>
+        © 2026 Code++ · C++ Edition & Java Edition
     </div>
 
 </footer>
 
 
 <script>
-    const menuButton =
-        document.getElementById("menuButton");
 
-    const navLinks =
-        document.getElementById("navLinks");
+    /*
+    ==========================================
+    CODE++ WEBSITE ROUTER
+    ==========================================
+
+    Không tạo thư mục /download /java...
+
+    Chỉ có index.html.
+
+    JavaScript sẽ thay toàn bộ nội dung
+    trong #app.
+
+    ==========================================
+    */
 
 
-    menuButton.addEventListener(
-        "click",
-        function () {
+    const pages = {
 
-            navLinks.classList.toggle("open");
+        /* =========================
+           HOME
+        ========================= */
+
+        home: `
+            <section class="page hero">
+
+                <div class="hero-content">
+
+                    <div class="badge">
+                        Code++ · Development Platform
+                    </div>
+
+                    <h1>
+                        Code<span>++</span>
+                    </h1>
+
+                    <p>
+                        Một dự án trình soạn thảo lập trình
+                        được xây dựng để đơn giản hóa
+                        việc viết code.
+                    </p>
+
+                    <div class="buttons">
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="navigate('download')"
+                        >
+                            Tải Code++
+                        </button>
+
+                        <button
+                            class="btn btn-secondary"
+                            onclick="navigate('features')"
+                        >
+                            Xem tính năng
+                        </button>
+
+                    </div>
+
+                    <div class="version-text">
+                        C++ Edition 1.1.3 · Java Edition 1.2.0
+                    </div>
+
+                </div>
+
+            </section>
+        `,
+
+
+        /* =========================
+           DOWNLOAD
+        ========================= */
+
+        download: `
+
+            <section class="page">
+
+                <div class="page-inner">
+
+                    <button
+                        class="back-button"
+                        onclick="goBack()"
+                    >
+                        ← Quay lại
+                    </button>
+
+
+                    <div class="page-title">
+
+                        <h1>
+                            Tải xuống
+                        </h1>
+
+                        <p>
+                            Chọn phiên bản Code++ mà bạn muốn sử dụng.
+                        </p>
+
+                    </div>
+
+
+                    <!-- C++ -->
+
+                    <div class="edition">
+
+                        <h2 class="edition-title">
+                            C++ Edition
+                        </h2>
+
+
+                        <div class="download-card">
+
+                            <div class="download-info">
+
+                                <h3>
+                                    Code++ 1.1.3
+                                </h3>
+
+                                <p>
+                                    Windows Installer ·
+                                    Phiên bản mới nhất
+                                </p>
+
+                            </div>
+
+
+                            <a
+                                class="btn btn-primary"
+                                href="CodePlusPlus-1.1.3-Setup.exe"
+                                download
+                            >
+                                Tải Installer
+                            </a>
+
+                        </div>
+
+
+                        <div class="download-card">
+
+                            <div class="download-info">
+
+                                <h3>
+                                    Code++ 1.1.2
+                                </h3>
+
+                                <p>
+                                    ZIP Package ·
+                                    Phiên bản cũ
+                                </p>
+
+                            </div>
+
+
+                            <a
+                                class="btn btn-secondary"
+                                href="CodePlusPlus-1.1.2.zip"
+                                download
+                            >
+                                Tải ZIP
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- JAVA -->
+
+                    <div class="edition">
+
+                        <h2 class="edition-title">
+                            Java Edition
+                        </h2>
+
+
+                        <div class="download-card">
+
+                            <div class="download-info">
+
+                                <h3>
+                                    Code++ Java Edition 1.2.0
+                                </h3>
+
+                                <p>
+                                    Installer ·
+                                    Release <strong>v1.2.0</strong>
+                                </p>
+
+                            </div>
+
+
+                            <a
+                                class="btn btn-primary"
+                                href="https://github.com/tuin5995-rgb/codePP/releases/tag/v1.2.0"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                GitHub Release
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        `,
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        features: `
+
+            <section class="page">
+
+                <div class="page-inner">
+
+                    <button
+                        class="back-button"
+                        onclick="goBack()"
+                    >
+                        ← Quay lại
+                    </button>
+
+
+                    <div class="page-title">
+
+                        <h1>
+                            Tính năng
+                        </h1>
+
+                        <p>
+                            Những gì Code++ đang hướng tới.
+                        </p>
+
+                    </div>
+
+
+                    <div class="grid">
+
+                        <div class="card">
+
+                            <div class="icon">
+                                &lt;/&gt;
+                            </div>
+
+                            <h3>
+                                C++ Edition
+                            </h3>
+
+                            <p>
+                                Môi trường tập trung
+                                vào việc viết và chỉnh sửa
+                                mã nguồn C++.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <div class="icon">
+                                ⚡
+                            </div>
+
+                            <h3>
+                                Nhẹ
+                            </h3>
+
+                            <p>
+                                Bộ cài được thiết kế
+                                nhỏ gọn và dễ triển khai.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <div class="icon">
+                                ☕
+                            </div>
+
+                            <h3>
+                                Java Edition
+                            </h3>
+
+                            <p>
+                                Phiên bản Java được
+                                phát triển song song
+                                với C++ Edition.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <div class="icon">
+                                ↓
+                            </div>
+
+                            <h3>
+                                Installer
+                            </h3>
+
+                            <p>
+                                Hỗ trợ cài đặt ứng dụng
+                                trên Windows.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <div class="icon">
+                                ↻
+                            </div>
+
+                            <h3>
+                                Cập nhật
+                            </h3>
+
+                            <p>
+                                Các phiên bản được đánh
+                                dấu bằng hệ thống version.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <div class="icon">
+                                Git
+                            </div>
+
+                            <h3>
+                                GitHub
+                            </h3>
+
+                            <p>
+                                Dự án được quản lý và
+                                phát hành thông qua GitHub.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        `,
+
+
+        /* =========================
+           DOCS
+        ========================= */
+
+        docs: `
+
+            <section class="page">
+
+                <div class="page-inner">
+
+                    <button
+                        class="back-button"
+                        onclick="goBack()"
+                    >
+                        ← Quay lại
+                    </button>
+
+
+                    <div class="page-title">
+
+                        <h1>
+                            Tài liệu
+                        </h1>
+
+                        <p>
+                            Thông tin về các phiên bản Code++.
+                        </p>
+
+                    </div>
+
+
+                    <div class="grid">
+
+                        <div class="card">
+
+                            <div class="icon">
+                                C++
+                            </div>
+
+                            <h3>
+                                C++ Edition
+                            </h3>
+
+                            <p>
+                                Dòng phiên bản dành cho
+                                trình soạn thảo C++.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <div class="icon">
+                                ☕
+                            </div>
+
+                            <h3>
+                                Java Edition
+                            </h3>
+
+                            <p>
+                                Dòng phiên bản Java,
+                                hiện tại là 1.2.0.
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <div class="icon">
+                                ?
+                            </div>
+
+                            <h3>
+                                Phiên bản
+                            </h3>
+
+                            <p>
+                                Mỗi phiên bản được đánh
+                                dấu bằng số version riêng.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        `,
+
+
+        /* =========================
+           CHANGELOG
+        ========================= */
+
+        changelog: `
+
+            <section class="page">
+
+                <div class="page-inner">
+
+                    <button
+                        class="back-button"
+                        onclick="goBack()"
+                    >
+                        ← Quay lại
+                    </button>
+
+
+                    <div class="page-title">
+
+                        <h1>
+                            Changelog
+                        </h1>
+
+                        <p>
+                            Các mốc phát triển của Code++.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline">
+
+
+                        <div class="release">
+
+                            <div class="release-head">
+
+                                <h2>
+                                    Code++ Java Edition 1.2.0
+                                </h2>
+
+                                <span class="release-date">
+                                    v1.2.0
+                                </span>
+
+                            </div>
+
+                            <ul>
+
+                                <li>
+                                    Phát hành Java Edition.
+                                </li>
+
+                                <li>
+                                    Installer được phát hành
+                                    thông qua GitHub Releases.
+                                </li>
+
+                                <li>
+                                    Release tag:
+                                    v1.2.0
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <div class="release">
+
+                            <div class="release-head">
+
+                                <h2>
+                                    Code++ C++ Edition 1.1.3
+                                </h2>
+
+                                <span class="release-date">
+                                    1.1.3
+                                </span>
+
+                            </div>
+
+                            <ul>
+
+                                <li>
+                                    Chuyển sang installer Windows.
+                                </li>
+
+                                <li>
+                                    Hỗ trợ shortcut.
+                                </li>
+
+                                <li>
+                                    Hỗ trợ uninstall.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <div class="release">
+
+                            <div class="release-head">
+
+                                <h2>
+                                    Code++ C++ Edition 1.1.2
+                                </h2>
+
+                                <span class="release-date">
+                                    1.1.2
+                                </span>
+
+                            </div>
+
+                            <ul>
+
+                                <li>
+                                    Phát hành dưới dạng ZIP.
+                                </li>
+
+                                <li>
+                                    Phiên bản package trước installer.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        `
+
+    };
+
+
+    /* =========================
+       ROUTER
+    ========================= */
+
+    let currentPage = "home";
+
+
+    function render(page, push = true) {
+
+        if (!pages[page]) {
+            page = "home";
+        }
+
+
+        currentPage = page;
+
+
+        document
+            .getElementById("app")
+            .innerHTML = pages[page];
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+
+        if (push) {
+
+            history.pushState(
+                {
+                    page: page
+                },
+                "",
+                "#" + page
+            );
+
+        }
+
+
+        updateTitle(page);
+
+    }
+
+
+    function navigate(page) {
+
+        render(
+            page,
+            true
+        );
+
+    }
+
+
+    function goBack() {
+
+        if (
+            window.history.length > 1 &&
+            currentPage !== "home"
+        ) {
+
+            history.back();
+
+        } else {
+
+            navigate("home");
+
+        }
+
+    }
+
+
+    function updateTitle(page) {
+
+        const titles = {
+
+            home:
+                "Code++",
+
+            download:
+                "Tải xuống | Code++",
+
+            features:
+                "Tính năng | Code++",
+
+            docs:
+                "Tài liệu | Code++",
+
+            changelog:
+                "Changelog | Code++"
+
+        };
+
+
+        document.title =
+            titles[page] ||
+            "Code++";
+
+    }
+
+
+    /* =========================
+       BROWSER BACK/FORWARD
+    ========================= */
+
+    window.addEventListener(
+        "popstate",
+        function (event) {
+
+            const page =
+                event.state &&
+                event.state.page
+                    ? event.state.page
+                    : (
+                        location.hash
+                            ? location.hash.substring(1)
+                            : "home"
+                    );
+
+
+            render(
+                page,
+                false
+            );
 
         }
     );
 
 
-    document
-        .querySelectorAll(".nav-links a")
-        .forEach(function (link) {
+    /* =========================
+       INITIAL PAGE
+    ========================= */
 
-            link.addEventListener(
-                "click",
-                function () {
+    let initialPage =
+        location.hash
+            ? location.hash.substring(1)
+            : "home";
 
-                    navLinks.classList.remove("open");
 
-                }
-            );
+    if (!pages[initialPage]) {
+        initialPage = "home";
+    }
 
-        });
+
+    render(
+        initialPage,
+        false
+    );
+
 </script>
 
 </body>
